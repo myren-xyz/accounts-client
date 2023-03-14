@@ -1,5 +1,19 @@
 [
   {
+    "name": "login",
+    "path": "/login",
+    "component": "/Users/blackestwhite/w/accounts-client/pages/login.vue",
+    "chunkName": "pages/login",
+    "_name": "_b5c9e818"
+  },
+  {
+    "name": "signup",
+    "path": "/signup",
+    "component": "/Users/blackestwhite/w/accounts-client/pages/signup.vue",
+    "chunkName": "pages/signup",
+    "_name": "_4aa05f9d"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "/Users/blackestwhite/w/accounts-client/pages/index.vue",

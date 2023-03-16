@@ -70,7 +70,7 @@
                     Resend Verification Code
                 </button>
 
-                <button class="py-2 px-4 bg-blue-100 text-blue-700 font-bold rounded-full">
+                <button class="py-2 px-4 bg-blue-100 text-blue-700 font-bold rounded-full" @click="verify">
                     Verify
                 </button>
             </div>
@@ -90,19 +90,46 @@ export default {
             password: null,
             firstname: null,
             lastname: null,
+
+            baseURL: null,
         }
+    },
+
+    mounted() {
+        this.baseURL = process.browser ? `${window.location.protocol}//${window.location.host}` : 'http://localhost:3000'
     },
 
     methods: {
         next() {
-            this.signup = false
+            const url = `${this.baseURL}/api/v1/users/signup`
+            const body = {
+                email: this.email,
+                password: this.password,
+                firstname: this.firstname,
+                lastname: this.lastname
+            }
+            this.$axios.post(url, body, {withCredentials: true}).then(res => {
+                console.log(res);
+                this.signup = false
+            }).catch(err => {
+                console.log(err.response.data);
+            })
         },
 
         change() {
             this.signup = true
         },
 
-        verify() {},
+        verify() {
+            const url = `${this.baseURL}/api/v1/users/verifyEmail?email=${this.email}&otc=${this.code}`
+            const body = {}
+            this.$axios.post(url, body, {withCredentials: true}).then(res => {
+                console.log(res);
+                this.$router.push('/login')
+            }).catch(err => {
+                console.log(err.response.data);
+            })
+        },
 
         resend() {},
 

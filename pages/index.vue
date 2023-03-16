@@ -1,6 +1,17 @@
 <template>
     <div>
-        <p> hello world </p>
+        <div>
+            <div class="rounded-full w-16 h-16 bg-gradient-to-br from-gray-800 to-slate-600 mx-auto m-3 flex items-center justify-center">
+                <p class="text-white mulish font-bold">
+                    {{ user.firstname[0] }} {{ user.lastname[0] }}
+                </p>
+            </div>
+        </div>
+        <h1 class="text-xl poppins text-center">
+            Welcome, {{ user.firstname }} {{ user.lastname }}
+        </h1>
+
+        <hr class="my-5"/>
     </div>
 </template>
 
@@ -30,7 +41,9 @@ export default{
         const user = JSON.parse(decoded)
 
         // update user
-        ctx.store.commit('UPDATE_USER', user)
+        return {
+            user
+        }
     }
 }
 </script>

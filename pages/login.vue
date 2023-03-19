@@ -53,7 +53,7 @@ export default {
 
     methods: {
         login() {
-            const url = `${this.baseURL}/api/v1/users/login`
+            const url = `/api/v1/users/login`
             const body = {
                 email: this.email,
                 password: this.password

@@ -47,5 +47,9 @@ export default {
         },
       },
     },
+  },
+
+  axios: {
+    baseURL: '/'
   }
 }
